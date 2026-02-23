@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>GT Statement Analyzer</title>
+</head>
+<body>
+
+<h2>Upload GTBank Statement PDF</h2>
+
+<form action="/upload" method="post" enctype="multipart/form-data">
+    <input type="file" name="file" required>
+    <button type="submit">Analyze</button>
+</form>
+
+{% if processed %}
+    <h3>Total Debit: ₦ {{ total_debit }}</h3>
+    <h3>Total Credit: ₦ {{ total_credit }}</h3>
+
+    <h3>Debit vs Credit</h3>
+    <img src="/static/debit_vs_credit.png">
+
+    <h3>Debit Categories</h3>
+    <img src="/static/debit_group.png">
+
+    <h3>Credit Categories</h3>
+    <img src="/static/credit_group.png">
+{% endif %}
+
+</body>
+</html>
